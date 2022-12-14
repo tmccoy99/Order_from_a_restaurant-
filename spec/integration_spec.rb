@@ -4,13 +4,13 @@ require "menu_item"
 
 describe "Integration testing" do
   
-  large_chips = MenuItem.new("Large Chips", 3, :sides)
-  small_chips = MenuItem.new("Small Chips", 2, :sides)
-  mushy_peas = MenuItem.new("Mushy Peas", 2.5, :sides)
-  cod = MenuItem.new("Cod", 7, :fish)
-  haddock = MenuItem.new("Haddock", 8, :fish)
-  jb_sausage = MenuItem.new("Jumbo Battered Sausage", 2.2, :traditional)
-  pea_fritter = MenuItem.new("Pea Fritter", 2.95, :traditional)
+  large_chips = MenuItem.new("Large Chips", 3, :Sides)
+  small_chips = MenuItem.new("Small Chips", 2, :Sides)
+  mushy_peas = MenuItem.new("Mushy Peas", 2.5, :Sides)
+  cod = MenuItem.new("Cod", 7, :Fish)
+  haddock = MenuItem.new("Haddock", 8, :Fish)
+  jb_sausage = MenuItem.new("Jumbo Battered Sausage", 2.2, :Traditional)
+  pea_fritter = MenuItem.new("Pea Fritter", 2.95, :Traditional)
   
   before(:each) do
     @io = double :io
@@ -29,13 +29,13 @@ describe "Integration testing" do
   
 end
 
-#large_chips = MenuItem.new("Large Chips", 3, :sides)
-#small_chips = MenuItem.new("Small Chips", 2, :sides)
-#mushy_peas = MenuItem.new("Mushy Peas", 2.5, :sides)
-#cod = MenuItem.new("Cod", 7, :fish)
-#haddock = MenuItem.new("Haddock", 8, :fish)
-#jb_sausage = MenuItem.new("Jumbo Battered Sausage", 2.2, :traditional)
-#pea_fritter = MenuItem.new("Pea Fritter", 2.95, :traditional)
+#large_chips = MenuItem.new("Large Chips", 3, :Sides)
+#small_chips = MenuItem.new("Small Chips", 2, :Sides)
+#mushy_peas = MenuItem.new("Mushy Peas", 2.5, :Sides)
+#cod = MenuItem.new("Cod", 7, :Fish)
+#haddock = MenuItem.new("Haddock", 8, :Fish)
+#jb_sausage = MenuItem.new("Jumbo Battered Sausage", 2.2, :Traditional)
+#pea_fritter = MenuItem.new("Pea Fritter", 2.95, :Traditional)
 #fnc_menu = Menu.new("Finn's Fantastic Fish Bar")
 #Menu.print
 # Hello! Welcome to Finn's Fantastic Fish Bar.
