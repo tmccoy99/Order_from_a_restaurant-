@@ -31,7 +31,8 @@ class Menu
   
   def print_items
     @categorised_items.each do |category, items|
-      @io.puts "\n##{category.upcase}:\n\n"
+      @io.puts "\n##{category.upcase}\n\n"
+      items.each { |item| @io.puts "#{item.name}: #{item.price_string}" }
     end
   end
 end
