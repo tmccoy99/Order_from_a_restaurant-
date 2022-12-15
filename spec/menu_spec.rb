@@ -16,10 +16,6 @@ describe "Menu unit tests before items added:" do
 end
 
 describe "Menu unit tests after items added:" do
-  
-  def make_item_dbl(name, price, category)
-    double(name: name, price: price)
-  end
     
   before(:each) do
 
