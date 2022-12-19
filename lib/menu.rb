@@ -9,7 +9,7 @@ class Menu
   end
   
   def add_items(*items)
-    categorise(items)
+    items.each { |item| @categorised_items[item.category] << item }
   end
   
   def print(header = true)
@@ -25,10 +25,6 @@ class Menu
   
   def print_header
     @io.puts("Welcome to #{@restaurant_name}!\nHere's the menu:")
-  end
-  
-  def categorise(items)
-    items.each { |item| @categorised_items[item.category] << item }
   end
   
   def print_items
