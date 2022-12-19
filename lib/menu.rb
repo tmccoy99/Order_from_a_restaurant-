@@ -12,12 +12,12 @@ class Menu
     categorise(items)
   end
   
-  def print
+  def print(header = true)
     if @categorised_items.empty?
       @io.puts "Sorry, no items on the menu!"
       return
     end
-    print_header
+    print_header if header
     print_items
   end
   
