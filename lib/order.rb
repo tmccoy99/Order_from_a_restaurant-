@@ -4,4 +4,8 @@ class Order
     @menu = menu
   end
 
+  def create
+    @menu.print
+  end
+
 end
