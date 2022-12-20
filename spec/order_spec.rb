@@ -18,14 +18,27 @@ describe Order do
   context "create is called" do
 
     it "calls #print on @menu, allows items to be selected and then prints receipt" do
+
       expect(@menu).to receive(:print).ordered
-      expect(@io).to receive(:puts).with("Which item would you like to add to your order?").ordered
-      expect(@io).to receive(:puts).with("To finish ordering, just hit return").ordered
+      expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
+      "To finish ordering, just hit return").ordered
       expect(@io).to receive(:gets).and_return("Chips").ordered
       expect(@io).to receive(:puts).with("How many portions of Chips would you like?").ordered
       expect(@io).to receive(:gets).and_return("3").ordered
       expect(@io).to receive(:puts).with("3 portions of Chips added to order!").ordered
-     
+      
+
+      expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
+      "To finish ordering, just hit return").ordered
+      expect(@io).to receive(:gets).and_return("Pea Fritter").ordered
+      expect(@io).to receive(:puts).with("How many portions of Pea Fritter would you like?").ordered
+      expect(@io).to receive(:gets).and_return("2").ordered
+      expect(@io).to receive(:puts).with("2 portions of Pea Fritter added to order!").ordered
+
+      expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
+      "To finish ordering, just hit return").ordered
+      expect(@io).to receive(:gets).and_return("").ordered
+      
       @order.create
     end
 

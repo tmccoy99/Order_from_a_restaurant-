@@ -12,20 +12,22 @@ class Order
 
   def create
     @menu.print
-    item_name = get_item
-    item_quantity = get_quantity(item_name)
-    @io.puts("#{item_quantity} portions of #{item_name} added to order!")
-
+    while true
+      item_name = get_item
+      break if item_name.empty?
+      item_quantity = get_quantity(item_name)
+      @io.puts("#{item_quantity} portions of #{item_name} added to order!")
+    end
   end
 
   private
 
   def get_item
     while true
-      @io.puts("Which item would you like to add to your order?")
-      @io.puts("To finish ordering, just hit return")
+      @io.puts("Which item would you like to add to your order?\n"\
+      "To finish ordering, just hit return")
       item_name = @io.gets.chomp.split.map(&:capitalize).join(" ")
-      return item_name if @items_to_prices.has_key?(item_name)
+      return item_name if @items_to_prices.has_key?(item_name) || item_name.empty?
       @io.puts "Sorry, that item is not on the menu\n\n"
     end
   end
