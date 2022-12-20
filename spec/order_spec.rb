@@ -17,7 +17,7 @@ describe Order do
 
   context "create is called" do
 
-    it "calls #print on @menu, allows items to be selected and then prints receipt" do
+    it "calls #print on @menu, allows items to be selected and then calls #receipt on self" do
 
       expect(@menu).to receive(:print).ordered
       expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
@@ -39,6 +39,10 @@ describe Order do
       "To finish ordering, just hit return").ordered
       expect(@io).to receive(:gets).and_return("").ordered
       
+      expect(@io).to receive(:puts).with("\nHere is your receipt!\n\n").ordered
+      expect(@io).to receive(:puts).with("Chipsx3: £10.05").ordered
+      expect(@io).to receive(:puts).with("Pea Fritterx2: £5.90").ordered
+      expect(@io).to receive(:puts).with("Total: £15.95").ordered
       @order.create
     end
 

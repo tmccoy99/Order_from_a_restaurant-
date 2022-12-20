@@ -7,17 +7,34 @@ class Order
     @menu.categorised_items.values.flatten.each do |item|
       @items_to_prices[item.name] = item.price
     end
-    @ordered_items = Hash.new(0)
   end
 
   def create
+    @ordered_items = Hash.new(0)
     @menu.print
     while true
       item_name = get_item
       break if item_name.empty?
       item_quantity = get_quantity(item_name)
+      @ordered_items[item_name] += item_quantity
       @io.puts("#{item_quantity} portions of #{item_name} added to order!")
     end
+    receipt
+  end
+
+  def receipt
+    if @ordered_items.empty?
+      @io.puts "Sorry, no items have been added to this order!"
+      return
+    end
+    @io.puts("\nHere is your receipt!\n\n")
+    total = 0
+    @ordered_items.each do |name, quantity|
+      price = @items_to_prices[name] * quantity
+      total += price
+      @io.puts "#{name}x#{quantity}: #{to_price(price)}"
+    end
+    @io.puts "Total: #{to_price(total)}"
   end
 
   private
@@ -40,5 +57,11 @@ class Order
       @io.puts "Sorry, you have not entered a valid quantity."\
       "Please enter a positive integer\n\n"
     end
+  end
+
+  def to_price(num)
+    num = "£" + num.to_f.round(2).to_s
+    num += "0" if num[-2] == "."
+    num
   end
 end
