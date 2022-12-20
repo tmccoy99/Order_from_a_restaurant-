@@ -13,8 +13,7 @@ class Order
   def create
     @menu.print
     item_name = get_item
-    @io.puts("And how many portions of #{item_name} would you like?")
-    item_quantity = @io.gets.chomp.to_i
+    item_quantity = get_quantity(item_name)
     @io.puts("#{item_quantity} portions of #{item_name} added to order!")
 
   end
@@ -28,6 +27,16 @@ class Order
       item_name = @io.gets.chomp.split.map(&:capitalize).join(" ")
       return item_name if @items_to_prices.has_key?(item_name)
       @io.puts "Sorry, that item is not on the menu\n\n"
+    end
+  end
+
+  def get_quantity(item_name)
+    while true
+      @io.puts("How many portions of #{item_name} would you like?")
+      quantity = @io.gets.chomp.to_i
+      return quantity unless quantity == 0
+      @io.puts "Sorry, you have not entered a valid quantity."\
+      "Please enter a positive integer\n\n"
     end
   end
 end

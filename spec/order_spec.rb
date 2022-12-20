@@ -22,7 +22,7 @@ describe Order do
       expect(@io).to receive(:puts).with("Which item would you like to add to your order?").ordered
       expect(@io).to receive(:puts).with("To finish ordering, just hit return").ordered
       expect(@io).to receive(:gets).and_return("Chips").ordered
-      expect(@io).to receive(:puts).with("And how many portions of Chips would you like?").ordered
+      expect(@io).to receive(:puts).with("How many portions of Chips would you like?").ordered
       expect(@io).to receive(:gets).and_return("3").ordered
       expect(@io).to receive(:puts).with("3 portions of Chips added to order!").ordered
      
