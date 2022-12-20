@@ -3,10 +3,11 @@ require "order"
 describe Order do
 
   before(:each) do
-    # item1 = "Chips: £2.50"
-    # item2 = "Cod: £7.70"
-    # item3 = "Pea Fritter: £2.95"
-    @menu = double :menu
+    cod = double(name: "Cod", price: 7.7)
+    chips = double(name: "Chips", price: 3.35)
+    pea_fritter = double(name: "Pea Fritter", price: 2.95)
+    @menu = double(:menu, categorised_items: {key1: [cod, chips],
+    key2: [pea_fritter]})
     @io = double :io
     @order = Order.new(@menu, @io)
   end
