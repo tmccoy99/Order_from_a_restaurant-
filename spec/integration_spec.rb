@@ -23,33 +23,38 @@ describe "Integration testing" do
   context "Menu#print called:" do
    it "prints formatted menu with restaurant_name in heading" do
     
-    expect(@io).to receive(:puts).with("Welcome to Finn's Fantastic Fish Bar!"\
-    "\nHere's the menu:").ordered
-    expect(@io).to receive(:puts).with("\n#FISH\n\n").ordered
-    expect(@io).to receive(:puts).with("Cod: £7.70").ordered
-    expect(@io).to receive(:puts).with("Haddock: £8.36").ordered
-    expect(@io).to receive(:puts).with("\n#TRADITIONAL\n\n").ordered
-    expect(@io).to receive(:puts).with("Jumbo Battered Sausage: £2.20").ordered
-    expect(@io).to receive(:puts).with("Pea Fritter: £2.95")
-    expect(@io).to receive(:puts).with("\n#SIDES\n\n").ordered
-    expect(@io).to receive(:puts).with("Large Chips: £3.00").ordered
-    expect(@io).to receive(:puts).with("Mushy Peas: £2.50").ordered
-    
-    @menu.print
+      expect(@io).to receive(:puts).with("Welcome to Finn's Fantastic Fish Bar!"\
+      "\nHere's the menu:").ordered
+      expect(@io).to receive(:puts).with("\n#FISH\n\n").ordered
+      expect(@io).to receive(:puts).with("Cod: £7.70").ordered
+      expect(@io).to receive(:puts).with("Haddock: £8.36").ordered
+      expect(@io).to receive(:puts).with("\n#TRADITIONAL\n\n").ordered
+      expect(@io).to receive(:puts).with("Jumbo Battered Sausage: £2.20").ordered
+      expect(@io).to receive(:puts).with("Pea Fritter: £2.95")
+      expect(@io).to receive(:puts).with("\n#SIDES\n\n").ordered
+      expect(@io).to receive(:puts).with("Large Chips: £3.00").ordered
+      expect(@io).to receive(:puts).with("Mushy Peas: £2.50").ordered
+      
+      @menu.print
     end
 
   end
 
   context "Order#create called but no items selected" do
     it "prints menu, then prints message saying no order placed" do
-    expect(@menu).to receive(:print).ordered
-    expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
-    "To finish ordering, just hit return").ordered
-    expect(@io).to receive(:gets).and_return("").ordered
-    expect(@io).to receive(:puts).with("\nSorry, no items have been added to this order!")
+      expect(@menu).to receive(:print).ordered
+      expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
+      "To finish ordering, just hit return").ordered
+      expect(@io).to receive(:gets).and_return("").ordered
+      expect(@io).to receive(:puts).with("\nSorry, no items have been added to this order!")
 
-    @order.create
+      @order.create
     end
+  end
+
+  context "Order#create called with proper inputs" do
+    xit "Allows items to be selected, then prints itemised receipt" do
+
   end
 end
 
