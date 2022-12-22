@@ -53,7 +53,7 @@ class Order
     while true
       @io.puts("How many portions of #{item_name} would you like?")
       quantity = @io.gets.chomp.to_i
-      return quantity unless quantity == 0
+      return quantity unless quantity <= 0
       @io.puts "Sorry, you have not entered a valid quantity."\
       "Please enter a positive integer\n\n"
     end
