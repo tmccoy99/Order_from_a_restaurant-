@@ -24,7 +24,7 @@ class Order
 
   def receipt
     if @ordered_items.empty?
-      @io.puts "Sorry, no items have been added to this order!"
+      @io.puts "\nSorry, no items have been added to this order!"
       return
     end
     @io.puts("\nHere is your receipt!\n\n")

@@ -1,5 +1,6 @@
 require "menu"
 require "menu_item"
+require "order"
 
 
 describe "Integration testing" do
@@ -11,11 +12,12 @@ describe "Integration testing" do
   jb_sausage = MenuItem.new("Jumbo Battered Sausage", 2.2, :Traditional)
   pea_fritter = MenuItem.new("Pea Fritter", 2.95, :Traditional)
   
-  before(:all) do
+  before(:each) do
     @io = double :io
     @menu = Menu.new("Finn's Fantastic Fish Bar", @io)
     @menu.add_items(cod, haddock, jb_sausage, pea_fritter,
     large_chips, mushy_peas)
+    @order = Order.new(@menu, @io)
   end
   
   context "Menu#print called:" do
@@ -39,7 +41,14 @@ describe "Integration testing" do
   end
 
   context "Order#create called but no items selected" do
-    xit "prints menu, then prints message saying no order placed" do
+    it "prints menu, then prints message saying no order placed" do
+    expect(@menu).to receive(:print).ordered
+    expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
+    "To finish ordering, just hit return").ordered
+    expect(@io).to receive(:gets).and_return("").ordered
+    expect(@io).to receive(:puts).with("\nSorry, no items have been added to this order!")
+
+    @order.create
     end
   end
 end

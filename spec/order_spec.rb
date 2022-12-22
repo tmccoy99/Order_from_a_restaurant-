@@ -54,7 +54,7 @@ describe Order do
       expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
       "To finish ordering, just hit return").ordered
       expect(@io).to receive(:gets).and_return("").ordered
-      expect(@io).to receive(:puts).with("Sorry, no items have been added to this order!")
+      expect(@io).to receive(:puts).with("\nSorry, no items have been added to this order!")
 
       @order.create
     end
