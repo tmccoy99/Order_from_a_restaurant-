@@ -53,8 +53,41 @@ describe "Integration testing" do
   end
 
   context "Order#create called with proper inputs" do
-    xit "Allows items to be selected, then prints itemised receipt" do
+    it "prints menu, allows items to be selected, then prints itemised receipt" do
+      expect(@menu).to receive(:print).ordered
+      expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
+      "To finish ordering, just hit return").ordered
+      expect(@io).to receive(:gets).and_return("Haddock").ordered
+      expect(@io).to receive(:puts).with("How many portions of Haddock would you like?").ordered
+      expect(@io).to receive(:gets).and_return("5").ordered
+      expect(@io).to receive(:puts).with("5 portions of Haddock added to order!").ordered
+      
 
+      expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
+      "To finish ordering, just hit return").ordered
+      expect(@io).to receive(:gets).and_return("Mushy Peas").ordered
+      expect(@io).to receive(:puts).with("How many portions of Mushy Peas would you like?").ordered
+      expect(@io).to receive(:gets).and_return("3").ordered
+      expect(@io).to receive(:puts).with("3 portions of Mushy Peas added to order!").ordered
+
+      expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
+      "To finish ordering, just hit return").ordered
+      expect(@io).to receive(:gets).and_return("Jumbo Battered Sausage").ordered
+      expect(@io).to receive(:puts).with("How many portions of Jumbo Battered Sausage would you like?").ordered
+      expect(@io).to receive(:gets).and_return("4").ordered
+      expect(@io).to receive(:puts).with("4 portions of Jumbo Battered Sausage added to order!").ordered
+
+      expect(@io).to receive(:puts).with("Which item would you like to add to your order?\n"\
+      "To finish ordering, just hit return").ordered
+      expect(@io).to receive(:gets).and_return("").ordered
+      
+      expect(@io).to receive(:puts).with("\nHere is your receipt!\n\n").ordered
+      expect(@io).to receive(:puts).with("Haddockx5: £41.80").ordered
+      expect(@io).to receive(:puts).with("Mushy Peasx3: £7.50").ordered
+      expect(@io).to receive(:puts).with("Jumbo Battered Sausagex4: £8.80").ordered
+      expect(@io).to receive(:puts).with("Total: £58.10").ordered
+      @order.create
+    end
   end
 end
 
