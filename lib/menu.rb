@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :categorised_items
+  attr_reader :categorised_items, :restaurant_name
 
   def initialize(restaurant_name, io = Kernel)
     @restaurant_name = restaurant_name
